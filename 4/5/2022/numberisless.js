@@ -8,7 +8,7 @@ function num(n) {
         }
     })
 }
-num(2).then((msg) => {
+num(11).then((msg) => {
     console.log(msg)
 }).catch((msg) => {
     console.log(msg)
