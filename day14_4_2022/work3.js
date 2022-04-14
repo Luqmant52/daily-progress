@@ -24,6 +24,6 @@ async function result(p) {
 }
 
 const errorHandler = (p) => p.then((result) => [result, undefined]).catch((err) => [undefined, err]
-    );
+);
 result(getConnection());
 result(getData());
