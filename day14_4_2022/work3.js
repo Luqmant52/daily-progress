@@ -14,19 +14,16 @@ function getData() {
     });
 }
 
-async function result() {
-    var [result1, result2] = await errorHandler(getConnection());
-    // var [result1, result2] = await getConnection();
-    // var [result1, result2] = await errorHandler(getData());
-    console.log(result1, result2);
-    // console.log(b);
+async function result(p) {
+    var [result1, result2] = await errorHandler(p);
+    if (result1)
+        console.log(result1);
+    else
+        console.log(result2);
+
 }
 
-function errorHandler(p) {
-    p.then((result) => {
-        return [result, "undefined"];
-    }).catch((err) => {
-        return ["undefined", err];
-    });
-}
-result();
+const errorHandler = (p) => p.then((result) => [result, undefined]).catch((err) => [undefined, err]
+    );
+result(getConnection());
+result(getData());
