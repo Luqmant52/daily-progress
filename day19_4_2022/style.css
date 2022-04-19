@@ -1,0 +1,22 @@
+.heading{
+    font-size: 36px;
+    color: black;
+}
+.heading .col2{
+    color: red;
+}
+.heading .col3{
+    color: green;
+}
+.heading .col4{
+    color: red;
+}
+.row{
+    display: flex;
+}
+.width{
+    width: 25%;
+    align-content: center;
+    border: 1px solid #000;
+    text-align: center;
+}
