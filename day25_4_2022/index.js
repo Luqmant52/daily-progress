@@ -1,17 +1,25 @@
-const express = require('express')
-const cors = require('cors')
-const app = express()
+const express = require('express');
+const app = express();
+const mysql = require('mysql');
 
-app.use(cors())
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'node'
+});
 
-app.get('/',(req,res)=>{
-    console.log("I am route")
+db.connect((err)=>{
+    if (err){
+        console.error('Error Conneting '+ err.stack);
+        return
+    }
+    console.log('connected as id '+ db.threadId)
+});
+
+app.get('/', (req, res) => {
+    console.log("Hello Db")
 })
-app.post('/user',(req,res)=>{
-    console.log(req.body)
-    console.log(req.body.user)
-})
-
 
 
 app.listen(3000,
