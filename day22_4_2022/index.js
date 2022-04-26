@@ -13,8 +13,9 @@ app.post('/user',(req,res)=>{
 })
 
 
-function foo() {
+function foo(req,res,next) {
     console.log("I am Function")
+    next()
 }
 
 app.listen(3000,
