@@ -31,8 +31,12 @@ app.get('/users/:id', (req, res) => {
 
 app.post('/register', (req, res) => {
     const email = req.body.email
-    const pass = req.body.password
-    db.query(`SELECT`)
+    console.log("We are in function")
+    db.query(`SELECT * FROM users WHERE email = '${email}'`, 
+    )
+    res.json({
+        email: "luqman"
+    })
 })
 
 app.post('/signup', (req, res) => {
