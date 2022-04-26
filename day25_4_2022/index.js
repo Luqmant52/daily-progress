@@ -29,12 +29,19 @@ app.get('/users/:id', (req, res) => {
     })
 })
 
-app.post('/signup', (req, res) => {
-    const name = req.body.name
+app.post('/register', (req, res) => {
     const email = req.body.email
     const pass = req.body.password
+    db.query(`SELECT`)
+})
 
-    db.query(`INSERT INTO users (name, email, password) VALUES ('${name}','${email}','${pass}')`,
+app.post('/signup', (req, res) => {
+    const { name, email, password } = req.body
+    // const name = req.body.name
+    // const email = req.body.email
+    // const pass = req.body.password
+
+    db.query(`INSERT INTO users (name, email, password) VALUES ('${name}','${email}','${password}')`,
         (error, result, fields) => {
             console.log('The user is ', result)
         })
