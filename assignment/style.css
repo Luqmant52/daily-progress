@@ -1,0 +1,22 @@
+.heading{
+    font-size: 36px;
+    color: black;
+}
+.heading .col2{
+    color: red;
+}
+.row{
+    display: flex;
+}
+.width{
+    width: 25%;
+    align-content: center;
+    border: 1px solid #000;
+    text-align: center;
+}
+.width1{
+    width: 24.9%;
+    align-content: center;
+    border: 1px solid #000;
+    text-align: center;
+}

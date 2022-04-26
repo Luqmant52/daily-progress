@@ -1,0 +1,8 @@
+#table {
+  width: 100%;
+  background: rgb(244, 167, 167);
+}
+.table-display {
+  display: inline-block;
+  padding-right: 5px;
+}

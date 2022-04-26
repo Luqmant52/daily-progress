@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <input type="email" name="email" placeholder="email" autocomplete="on"><br>
+        <input type="password" name="password" placeholder="password" autocomplete="on"><br>
+        <input type="submit">
+    </form>
+
+    <script>
+        const frm = document.querySelector('form')
+        frm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const result = await fetch('http://localhost:3000/register', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: frm.email.value,
+                    password: frm.password.value
+                }),
+                headers: {
+                    'Content-Type': 'Application/Json'
+                }
+            })
+            const data = await result.json()
+            console.log(data)
+        })
+    </script>
+</body>
+
+</html>
