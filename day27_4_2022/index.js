@@ -13,13 +13,26 @@ const db = mysql.createConnection({
     database: 'node'
 });
 
-app.post('/register', (req, res) => {
-    console.log(`We are in Post function`)
+app.post('/signin', (req, res) => {
+    console.log(`We are in signin function`)
     const email = req.body.email
     const password = req.body.password
     res.status(200).json({
         email,
         password,
+    })
+})
+app.post('/signup', (req, res) => {
+    console.log(`We are in sigun up function`)
+    const name = req.body.name
+    const email = req.body.email
+    const password = req.body.password
+    const cpassword = req.body.password
+    res.status(200).json({
+        name,
+        email,
+        password,
+        cpassword,
     })
 })
 
