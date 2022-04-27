@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 const mysql = require('mysql');
-const brypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 const saltRounds = 10;
 
@@ -43,8 +43,8 @@ app.post('/signup', async (req, res) => {
     const email = req.body.email
     const password = req.body.password
     const cpassword = req.body.cpassword
-    const encPass = await brypt.hash(password, 13);
-    const cEncPass = await brypt.hash(password, 13);
+    const encPass = await bcrypt.hash(password, 13);
+    const cEncPass = await bcrypt.hash(password, 13);
     console.log(encPass)
     console.log(cEncPass)
     db.query(`INSERT INTO users (name, email, password,cpassword) VALUES ('${name}','${email}','${encPass}','${cEncPass}')`,
