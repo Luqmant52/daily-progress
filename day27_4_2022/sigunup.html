@@ -3,7 +3,7 @@
 
 <head>
   <!-- Design by foolishdeveloper.com -->
-  <title>Glassmorphism login Form Tutorial in html css</title>
+  <title>Sign up</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,20 +15,18 @@
   <div id="login-box">
     <div class="left">
       <h1>Sign up</h1>
-
-      <form action="">
-        <input type="text" name="username" placeholder="Username" />
+      <form>
+        <input type="text" name="name" placeholder="Username" />
         <input type="text" name="email" placeholder="E-mail" />
         <input type="password" name="password" placeholder="Password" />
         <input type="password" name="password2" placeholder="Retype password" />
-
         <input type="submit" name="signup_submit" value="Sign me up" />
       </form>
     </div>
   </div>
   <script>
     const form2 = document.querySelector('form')
-    form2.addEventListener('submit',async (e) => {
+    form2.addEventListener('submit', async (e) => {
       e.preventDefault()
       const result = await fetch('http://localhost:3000/signup', {
         method: 'POST',
@@ -36,13 +34,16 @@
           name: form2.name.value,
           email: form2.email.value,
           password: form2.password.value,
-          cpassword: form2.password.value,
+          cpassword: form2.password2.value,
         }),
+        headers:{
+          'content-Type':'application/json'
+        }
       })
       const data = await result.json()
       console.log(data)
     })
-</script>
+  </script>
 </body>
 
 </html>
