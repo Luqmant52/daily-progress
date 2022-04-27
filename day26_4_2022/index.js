@@ -13,6 +13,15 @@ const db = mysql.createConnection({
     database: 'node'
 });
 
+db.connect((error) => {
+    if (error) {
+        console.log(error)
+    }
+    else {
+        console.log("Db is Connected");
+    }
+})
+
 app.post('/register', (req, res) => {
     console.log(`We are in Post function`)
     const email = req.body.email
