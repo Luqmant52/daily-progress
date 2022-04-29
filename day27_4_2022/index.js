@@ -29,18 +29,17 @@ db.connect((error) => {
     }
 })
 
-// app.get('/getuser', (req, res) => {
-//     const id = req.params.id
-//     db.query(`SELECT * FROM users`, (err, result) => {
-//         if (err) {
-//             console.log(err)
-//         }
-//         else {
-//             console.log(result)
-//         }
-//     })
-// })
-
+app.get('/getuser', (req, res) => {
+    const id = req.params.id
+    db.query(`SELECT * FROM users`, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log(result)
+        }
+    })
+})
 
 app.post('/signup', async (req, res) => {
     console.log(`We are in sigun up function`)
