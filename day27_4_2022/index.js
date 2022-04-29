@@ -3,8 +3,13 @@ const app = express();
 const cors = require('cors')
 const mysql = require('mysql');
 const bcrypt = require('bcrypt')
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize('node', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql'
+});
 
-const saltRounds = 10;
+// const saltRounds = 10;
 
 app.use(cors())
 app.use(express.json())
@@ -24,17 +29,17 @@ db.connect((error) => {
     }
 })
 
-app.get('/getuser', (req, res) => {
-    const id = req.params.id
-    db.query(`SELECT * FROM users`, (err, result) => {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            console.log(result)
-        }
-    })
-})
+// app.get('/getuser', (req, res) => {
+//     const id = req.params.id
+//     db.query(`SELECT * FROM users`, (err, result) => {
+//         if (err) {
+//             console.log(err)
+//         }
+//         else {
+//             console.log(result)
+//         }
+//     })
+// })
 
 
 app.post('/signup', async (req, res) => {
@@ -47,7 +52,7 @@ app.post('/signup', async (req, res) => {
     const cEncPass = await bcrypt.hash(password, 13);
     console.log(encPass)
     console.log(cEncPass)
-    db.query(`INSERT INTO users (name, email, password,cpassword) VALUES ('${name}','${email}','${encPass}','${cEncPass}')`,
+    db.query(`INSERT INTO users (name, email, password,cpassword) VALUES ('${name}','${email}','${password}','${cpassword}')`,
         (error, result) => {
             if (error) {
                 console.log(error)
@@ -56,6 +61,10 @@ app.post('/signup', async (req, res) => {
                 console.log('The user is ', result)
             }
         })
+        console.log(name)
+        console.log(email)
+        console.log(password)
+        console.log(cpassword)
     res.status(200).json({
         name,
         email,
@@ -64,10 +73,13 @@ app.post('/signup', async (req, res) => {
     })
 })
 
-app.post('/signin', (req, res) => {
+app.post('/signin', async (req, res) => {
     console.log(`We are in signin function`)
     const email = req.body.email
     const password = req.body.password
+    const dbdata =  db.query(`SELECT * from  users WHERE email = ${email}`)
+    const bcom = await bcrypt.compare(password,dbdata.encPass)
+    console.log(bcom)
     res.status(200).json({
         email,
         password,
