@@ -13,6 +13,7 @@ const sequelize = new Sequelize('node', 'root', '', {
     }
 });
 
+
 async function connected() {
     try {
         await sequelize.authenticate();
