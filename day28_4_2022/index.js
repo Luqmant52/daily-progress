@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 const bcrypt = require('bcrypt')
-const userRoutes = require('./routes/user.Routes') 
+const userRoutes = require('./routes/user.routes') 
 
 
 app.use('/',userRoutes)
